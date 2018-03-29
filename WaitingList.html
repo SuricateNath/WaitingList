@@ -1,0 +1,88 @@
+<template name="home">
+
+  <head>
+    <title>WaitingList</title>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Waiting List</h1>
+
+        {{#if alreadywaiter}}
+
+          balise "with" permet de nommer la collection et d'afficher les attributs 
+          {{#with alreadyWaiter}}
+            
+           Bonjour <b>{{ name }} </b>, tu es actuellement partagé le lien <b>{{ shares }}</b> fois. Tu es en position <b>{{ postition }}</b>.
+
+           Ton lien de partage : http://10.1.93.179:3000/share/{{_id}}
+
+          {{/with}}
+
+        {{ else}}            
+            {{> form }}     
+        {{/if}}
+
+      </div>
+    </div>
+    <div class="row waiters">
+      <div class="col-md-6 col-md-offset-3">
+         {{> waiters }}
+      </div>
+    </div>
+
+  </body>
+</template>
+
+
+
+
+
+<template name="form">
+  <h3 align="center">Rejoignez la communauté !</h3> 
+
+  <form class="form-inline" align="center">
+
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" placeholder="votre nom...">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="votre e-mail...">
+    </div>
+
+    <button class="btn btn-default">Inscrivez-vous</button>
+  </form>
+
+</template>
+
+
+
+
+<template name="waiters">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th> N° </th>
+            <th>Nom</th>
+            <th>Shares</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{ #each waiters}}
+          <tr>
+              <td></td>
+              <td> {{ name }}</td> 
+              <td>{{ shares }}</td>
+          </tr>
+        {{ /each }}
+      </tbody>
+    </table>
+
+</template> 
+
+
